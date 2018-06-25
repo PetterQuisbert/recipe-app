@@ -1,18 +1,20 @@
 package com.truextend.reciipeapp.controller;
 
+import com.truextend.reciipeapp.api.v1.dto.RecipeDTO;
+import com.truextend.reciipeapp.api.v1.dto.RecipeListDTO;
 import com.truextend.reciipeapp.domain.Recipe;
 import com.truextend.reciipeapp.services.RecipeService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/recipes")
+@RequestMapping(RecipeController.BASE_URL)
 public class RecipeController {
+
+    public static final String BASE_URL = "/api/v1/recipes";
 
     private final RecipeService recipeService;
 
@@ -21,9 +23,10 @@ public class RecipeController {
         this.recipeService = recipeService;
     }
 
-    @GetMapping(value = {"", "/"})
-    public List<Recipe> list() {
-        return this.recipeService.list();
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public RecipeListDTO list() {
+        return new RecipeListDTO(this.recipeService.list());
     }
 
     public Recipe saveRecipe(@Valid @RequestBody Recipe recipe) {
