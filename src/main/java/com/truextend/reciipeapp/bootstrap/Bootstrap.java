@@ -26,7 +26,7 @@ public class Bootstrap implements CommandLineRunner {
         user1.setFirstname("Petter");
         user1.setLastname("Quisbert");
         user1.setEmail("petter.quisbert@gmail.com");
-        user1.setUsername("p");
+        user1.setUsername("petter");
         user1.setPassword(SecurityUtility.passwordEncoder().encode("p"));
 
         Role role1 = new Role();
@@ -43,7 +43,7 @@ public class Bootstrap implements CommandLineRunner {
         user2.setFirstname("Admin");
         user2.setLastname("Admin");
         user2.setEmail("admin@gmail.com");
-        user2.setUsername("a");
+        user2.setUsername("admin");
         user2.setPassword(SecurityUtility.passwordEncoder().encode("p"));
 
         Role role2 = new Role();

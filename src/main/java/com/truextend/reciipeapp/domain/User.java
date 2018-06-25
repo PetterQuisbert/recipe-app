@@ -27,7 +27,8 @@ public class User implements UserDetails, Serializable {
     private String username;
 
     @NotBlank
-    @Size(min = 1, max = 50)
+    @Size(min = 1, max = 255)
+    @Column(columnDefinition = "text")
     private String password;
 
     @NotBlank
@@ -157,5 +158,19 @@ public class User implements UserDetails, Serializable {
         return enabled;
     }
 
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", enabled=" + enabled +
+                ", userRoles=" + userRoles +
+                ", recipeList=" + recipeList +
+                '}';
+    }
 }
