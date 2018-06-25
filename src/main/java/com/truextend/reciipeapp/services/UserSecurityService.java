@@ -1,7 +1,7 @@
 package com.truextend.reciipeapp.services;
 
-import com.truextend.reciipeapp.domain.security.User;
-import com.truextend.reciipeapp.repositories.UserRepository;
+import com.truextend.reciipeapp.domain.User;
+import com.truextend.reciipeapp.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UserDetails;

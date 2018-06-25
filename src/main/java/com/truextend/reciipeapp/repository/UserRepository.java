@@ -1,6 +1,6 @@
-package com.truextend.reciipeapp.repositories;
+package com.truextend.reciipeapp.repository;
 
-import com.truextend.reciipeapp.domain.security.User;
+import com.truextend.reciipeapp.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

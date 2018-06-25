@@ -1,9 +1,9 @@
 package com.truextend.reciipeapp.bootstrap;
 
 import com.truextend.reciipeapp.config.SecurityUtility;
-import com.truextend.reciipeapp.domain.security.Role;
-import com.truextend.reciipeapp.domain.security.User;
-import com.truextend.reciipeapp.domain.security.UserRole;
+import com.truextend.reciipeapp.domain.Role;
+import com.truextend.reciipeapp.domain.User;
+import com.truextend.reciipeapp.domain.UserRole;
 import com.truextend.reciipeapp.services.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

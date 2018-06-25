@@ -1,10 +1,9 @@
-package com.truextend.reciipeapp.services.impl;
+package com.truextend.reciipeapp.services;
 
-import com.truextend.reciipeapp.domain.security.User;
-import com.truextend.reciipeapp.domain.security.UserRole;
-import com.truextend.reciipeapp.repositories.RoleRepository;
-import com.truextend.reciipeapp.repositories.UserRepository;
-import com.truextend.reciipeapp.services.UserService;
+import com.truextend.reciipeapp.domain.User;
+import com.truextend.reciipeapp.domain.UserRole;
+import com.truextend.reciipeapp.repository.RoleRepository;
+import com.truextend.reciipeapp.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

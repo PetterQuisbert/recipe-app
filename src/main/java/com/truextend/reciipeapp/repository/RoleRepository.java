@@ -1,6 +1,6 @@
-package com.truextend.reciipeapp.repositories;
+package com.truextend.reciipeapp.repository;
 
-import com.truextend.reciipeapp.domain.security.Role;
+import com.truextend.reciipeapp.domain.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RoleRepository extends JpaRepository<Role, Long> {

@@ -1,7 +1,7 @@
 package com.truextend.reciipeapp.services;
 
-import com.truextend.reciipeapp.domain.security.User;
-import com.truextend.reciipeapp.domain.security.UserRole;
+import com.truextend.reciipeapp.domain.User;
+import com.truextend.reciipeapp.domain.UserRole;
 
 import java.util.Set;
 

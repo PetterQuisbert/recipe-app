@@ -1,4 +1,4 @@
-package com.truextend.reciipeapp.domain.security;
+package com.truextend.reciipeapp.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;

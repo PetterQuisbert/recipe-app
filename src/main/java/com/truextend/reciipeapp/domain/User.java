@@ -1,10 +1,12 @@
-package com.truextend.reciipeapp.domain.security;
+package com.truextend.reciipeapp.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashSet;
@@ -19,12 +21,29 @@ public class User implements UserDetails, Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
+    @Size(min = 3, max = 255)
     private String username;
+
+    @NotBlank
+    @Size(min = 1, max = 50)
     private String password;
+
+    @NotBlank
+    @Size(min = 3, max = 255)
     private String firstname;
+
+    @NotBlank
+    @Size(min = 3, max = 255)
     private String lastname;
+
+    @NotBlank
+    @Size(min = 3, max = 255)
     private String email;
+
+    @Size(min = 3, max = 11)
     private String phone;
+
     private boolean enabled = true;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

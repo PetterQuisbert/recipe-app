@@ -1,4 +1,4 @@
-package com.truextend.reciipeapp.domain.security;
+package com.truextend.reciipeapp.domain;
 
 import org.springframework.security.core.GrantedAuthority;
 
