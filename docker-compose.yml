@@ -1,22 +1,26 @@
 version: "2"
 
 services:
-#  auth_mysql:
-#    image: mysql:latest
-#    restart: always
-#    container_name: auth_mysql
-#    ports:
-#      - "3306:3306"
-#    environment:
-#      - MYSQL_DATABASE=recipeapp
-#      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
-
   auth_redis:
     image: redis:latest
     restart: always
     container_name: auth_redis
     ports:
       - "6379:6379"
+    networks:
+      - network-tier
+
+  auth_mysql:
+    image: mysql:latest
+    restart: always
+    container_name: auth_mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - network-tier
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+
 
 networks:
   network-tier:
