@@ -32,6 +32,7 @@ It was created 2 users by default:
     role: ROLE_ADMIN
  
  To run endpoints from terminal perform:
+ 
     - curl localhost:8080/api/v1/recipes
     This should get a 401 error
     
