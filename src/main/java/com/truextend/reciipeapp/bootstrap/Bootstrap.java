@@ -1,9 +1,11 @@
 package com.truextend.reciipeapp.bootstrap;
 
 import com.truextend.reciipeapp.config.SecurityUtility;
+import com.truextend.reciipeapp.domain.Recipe;
 import com.truextend.reciipeapp.domain.Role;
 import com.truextend.reciipeapp.domain.User;
 import com.truextend.reciipeapp.domain.UserRole;
+import com.truextend.reciipeapp.services.RecipeService;
 import com.truextend.reciipeapp.services.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -15,13 +17,52 @@ import java.util.Set;
 public class Bootstrap implements CommandLineRunner {
 
     private final UserService userService;
+    private final RecipeService recipeService;
 
-    public Bootstrap(UserService userService) {
+    public Bootstrap(UserService userService, RecipeService recipeService) {
         this.userService = userService;
+        this.recipeService = recipeService;
     }
 
     @Override
     public void run(String... args) throws Exception {
+        populateUserData();
+        populateRecipeData();
+    }
+
+    public void populateRecipeData() {
+        User userPetter = userService.findById(1L);
+        User userAdmin = userService.findById(2L);
+
+        Recipe recipe1 = new Recipe();
+        recipe1.setId(1L);
+        recipe1.setDescription("onions1");
+        recipe1.setCookTime(10);
+        recipe1.setPrepTime(12);
+        recipe1.setUser(userAdmin);
+
+        recipeService.save(recipe1);
+
+        Recipe recipe2 = new Recipe();
+        recipe2.setId(2L);
+        recipe2.setDescription("onions 2");
+        recipe2.setCookTime(11);
+        recipe2.setPrepTime(2);
+        recipe2.setUser(userPetter);
+
+        recipeService.save(recipe2);
+
+        Recipe recipe3 = new Recipe();
+        recipe3.setId(3L);
+        recipe3.setDescription("onions 3");
+        recipe3.setCookTime(1);
+        recipe3.setPrepTime(23);
+        recipe3.setUser(userPetter);
+
+        recipeService.save(recipe3);
+    }
+
+    private void populateUserData() {
         User user1 = new User();
         user1.setFirstname("Petter");
         user1.setLastname("Quisbert");
@@ -47,13 +88,12 @@ public class Bootstrap implements CommandLineRunner {
         user2.setPassword(SecurityUtility.passwordEncoder().encode("p"));
 
         Role role2 = new Role();
-        role2.setId(1L);
+        role2.setId(2L);
         role2.setName("ROLE_ADMIN");
 
         userRoles.add(new UserRole(user2, role2));
 
         userService.createUser(user2, userRoles);
         userRoles.clear();
-
     }
 }

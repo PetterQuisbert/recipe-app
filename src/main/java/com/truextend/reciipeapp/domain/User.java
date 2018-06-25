@@ -169,8 +169,6 @@ public class User implements UserDetails, Serializable {
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", enabled=" + enabled +
-                ", userRoles=" + userRoles +
-                ", recipeList=" + recipeList +
                 '}';
     }
 }

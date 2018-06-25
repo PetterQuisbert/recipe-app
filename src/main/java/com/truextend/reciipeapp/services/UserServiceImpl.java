@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -47,7 +48,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findByUsername(String username) {
-        return null;
+        return userRepository.findByUsername(username);
     }
 
     @Override
@@ -62,6 +63,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findById(Long id) {
-        return null;
+        Optional<User> userOpt = userRepository.findById(id);
+        return userOpt.orElse(null);
     }
 }
