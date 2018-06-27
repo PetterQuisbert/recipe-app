@@ -15,8 +15,13 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.when;
 
 public class RecipeServiceTest {
+
+    private static final Long ID = 1L;
+    private static final String DESCRIPTION = "onions";
 
     private RecipeMapper recipeMapper;
 
@@ -39,7 +44,7 @@ public class RecipeServiceTest {
 
         List<Recipe> recipeList = Arrays.asList(new Recipe(), new Recipe());
 
-        Mockito.when(recipeRepository.findAll()).thenReturn(recipeList);
+        when(recipeRepository.findAll()).thenReturn(recipeList);
 
         List<RecipeDTO> recipeDTOS = recipeService.list();
 
@@ -48,5 +53,22 @@ public class RecipeServiceTest {
 
     @Test
     public void save() {
+
+    }
+
+    @Test
+    public void getRecipeByDescription() {
+        Recipe recipe = new Recipe();
+        recipe.setId(ID);
+        recipe.setDescription(DESCRIPTION);
+
+        when(recipeRepository.findByDescription(anyString())).thenReturn(recipe);
+
+        RecipeDTO recipeDTO = recipeService.getRecipeByDescription("hi");
+
+
+        assertEquals(ID, recipeDTO.getId());
+        assertEquals(DESCRIPTION, recipeDTO.getDescription());
+
     }
 }

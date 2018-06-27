@@ -33,6 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/book/**",
             "/user/**",
             "/api/v1/users/newUser",
+            "/api/v1/recipes/*",
             "/api/v1/users/**"
     };
 

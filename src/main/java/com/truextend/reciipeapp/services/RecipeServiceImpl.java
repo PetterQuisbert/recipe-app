@@ -30,7 +30,15 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
-    public Recipe save(Recipe recipe) {
-        return this.recipeRepository.save(recipe);
+    public RecipeDTO getRecipeByDescription(String description) {
+        Recipe byDescription = recipeRepository.findByDescription(description);
+
+        return recipeMapper.recipeToRecipeDTO(byDescription);
+    }
+
+    @Override
+    public RecipeDTO save(RecipeDTO recipeDTO) {
+        Recipe recipe = recipeMapper.recipeDTOToRecipe(recipeDTO);
+        return recipeMapper.recipeToRecipeDTO(this.recipeRepository.save(recipe));
     }
 }

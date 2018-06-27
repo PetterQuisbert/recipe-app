@@ -1,7 +1,7 @@
 package com.truextend.reciipeapp.bootstrap;
 
+import com.truextend.reciipeapp.api.v1.dto.RecipeDTO;
 import com.truextend.reciipeapp.config.SecurityUtility;
-import com.truextend.reciipeapp.domain.Recipe;
 import com.truextend.reciipeapp.domain.Role;
 import com.truextend.reciipeapp.domain.User;
 import com.truextend.reciipeapp.domain.UserRole;
@@ -34,7 +34,7 @@ public class Bootstrap implements CommandLineRunner {
         User userPetter = userService.findById(1L);
         User userAdmin = userService.findById(2L);
 
-        Recipe recipe1 = new Recipe();
+        RecipeDTO recipe1 = new RecipeDTO();
         recipe1.setId(1L);
         recipe1.setDescription("onions1");
         recipe1.setCookTime(10);
@@ -43,7 +43,7 @@ public class Bootstrap implements CommandLineRunner {
 
         recipeService.save(recipe1);
 
-        Recipe recipe2 = new Recipe();
+        RecipeDTO recipe2 = new RecipeDTO();
         recipe2.setId(2L);
         recipe2.setDescription("onions 2");
         recipe2.setCookTime(11);
@@ -52,7 +52,7 @@ public class Bootstrap implements CommandLineRunner {
 
         recipeService.save(recipe2);
 
-        Recipe recipe3 = new Recipe();
+        RecipeDTO recipe3 = new RecipeDTO();
         recipe3.setId(3L);
         recipe3.setDescription("onions 3");
         recipe3.setCookTime(1);

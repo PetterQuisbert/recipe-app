@@ -6,6 +6,10 @@ import com.truextend.reciipeapp.api.v1.dto.RecipeDTO;
 import java.util.List;
 
 public interface RecipeService {
+
     List<RecipeDTO> list();
-    Recipe save(Recipe recipe);
+
+    RecipeDTO getRecipeByDescription(String description);
+
+    RecipeDTO save(RecipeDTO recipeDTO);
 }
