@@ -63,7 +63,9 @@ public class RecipeController {
     @GetMapping("/{description}")
     public RecipeDTO getRecipeByDescription(@PathVariable String description) {
         RecipeDTO recipeByDescription = recipeService.getRecipeByDescription(description);
+
         LOG.info("RecipeDTO:.. " + recipeByDescription);
+
         if (recipeByDescription != null) {
             return recipeByDescription;
         } else {
