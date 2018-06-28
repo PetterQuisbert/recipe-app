@@ -23,6 +23,7 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -111,22 +112,38 @@ public class RecipeControllerTest {
 
     }
 
+//    @Test
+//    public void getRecipeByDescription() throws Exception {
+//        RecipeDTO recipeDTO = new RecipeDTO();
+//        recipeDTO.setId(ID);
+//        recipeDTO.setDescription(DESCRIPTION);
+//
+//        when(recipeService.getRecipeByDescription(anyString())).thenReturn(recipeDTO);
+//
+//        mockMvc.perform(get(RecipeController.BASE_URL + "/onions")
+//                .contentType(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$.description", equalTo(DESCRIPTION)));
+//
+//    }
+
     @Test
-    public void getRecipeByDescription() throws Exception {
+    public void saveRecipe() {
+    }
+
+    @Test
+    public void getRecipeById() throws Exception {
         RecipeDTO recipeDTO = new RecipeDTO();
         recipeDTO.setId(ID);
         recipeDTO.setDescription(DESCRIPTION);
+        recipeDTO.setRecipeUrl("/api/recipes/1");
 
-        when(recipeService.getRecipeByDescription(anyString())).thenReturn(recipeDTO);
+        when(recipeService.getRecipeById(anyLong())).thenReturn(recipeDTO);
 
-        mockMvc.perform(get(RecipeController.BASE_URL + "/onions")
+        mockMvc.perform(get("/api/v1/recipes/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.description", equalTo(DESCRIPTION)));
 
-    }
-
-    @Test
-    public void saveRecipe() {
     }
 }

@@ -30,6 +30,8 @@ public class UserDTO {
     @Size(min = 3, max = 11)
     private String phone;
 
+    private String userURL;
+
     @JsonIgnore
     private Set<UserRole> userRoles = new HashSet<>();
 
@@ -79,6 +81,14 @@ public class UserDTO {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getUserURL() {
+        return userURL;
+    }
+
+    public void setUserURL(String userURL) {
+        this.userURL = userURL;
     }
 
     public Set<UserRole> getUserRoles() {

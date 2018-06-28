@@ -11,5 +11,7 @@ public interface RecipeService {
 
     RecipeDTO getRecipeByDescription(String description);
 
+    RecipeDTO getRecipeById(Long id);
+
     RecipeDTO save(RecipeDTO recipeDTO);
 }

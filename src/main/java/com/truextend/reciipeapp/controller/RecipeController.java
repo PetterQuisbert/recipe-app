@@ -60,19 +60,30 @@ public class RecipeController {
         return new RecipeListDTO(Arrays.asList());
     }
 
-    @GetMapping("/{description}")
-    public RecipeDTO getRecipeByDescription(@PathVariable String description) {
-        RecipeDTO recipeByDescription = recipeService.getRecipeByDescription(description);
+    @GetMapping("/{id}")
+    public RecipeDTO getRecipeById(@PathVariable Long id) {
+        RecipeDTO recipeById = recipeService.getRecipeById(id);
 
-        LOG.info("RecipeDTO:.. " + recipeByDescription);
-
-        if (recipeByDescription != null) {
-            return recipeByDescription;
+        if (recipeById != null) {
+            return recipeById;
         } else {
-            throw new NotFoundExceptions("description " + description + " not found");
+            throw new NotFoundExceptions("id " + id + " not found");
         }
 
     }
+
+//    @GetMapping("/{description}")
+//    public RecipeDTO getRecipeByDescription(@PathVariable String description) {
+//        RecipeDTO recipeByDescription = recipeService.getRecipeByDescription(description);
+//
+//        LOG.info("RecipeDTO:.. " + recipeByDescription);
+//
+//        if (recipeByDescription != null) {
+//            return recipeByDescription;
+//        } else {
+//            throw new NotFoundExceptions("description " + description + " not found");
+//        }
+//    }
 
     @PostMapping
     public RecipeDTO saveRecipe(@Valid @RequestBody RecipeDTO recipeDTO) {

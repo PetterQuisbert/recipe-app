@@ -23,6 +23,8 @@ public class RecipeDTO {
     @Max(999)
     private Integer cookTime;
 
+    private String recipeUrl;
+
     @JsonIgnore
     private User user;
 
@@ -56,6 +58,14 @@ public class RecipeDTO {
 
     public void setCookTime(Integer cookTime) {
         this.cookTime = cookTime;
+    }
+
+    public String getRecipeUrl() {
+        return recipeUrl;
+    }
+
+    public void setRecipeUrl(String recipeUrl) {
+        this.recipeUrl = recipeUrl;
     }
 
     public User getUser() {

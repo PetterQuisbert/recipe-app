@@ -2,6 +2,7 @@ package com.truextend.reciipeapp.services;
 
 import com.truextend.reciipeapp.api.v1.dto.RecipeDTO;
 import com.truextend.reciipeapp.api.v1.mapper.RecipeMapper;
+import com.truextend.reciipeapp.controller.RecipeController;
 import com.truextend.reciipeapp.domain.Recipe;
 import com.truextend.reciipeapp.repository.RecipeRepository;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,11 @@ public class RecipeServiceImpl implements RecipeService {
     public List<RecipeDTO> list() {
         return this.recipeRepository.findAll()
                 .stream()
-                .map(recipeMapper::recipeToRecipeDTO)
+                .map( recipe -> {
+                    RecipeDTO recipeDTO = recipeMapper.recipeToRecipeDTO(recipe);
+                    recipeDTO.setRecipeUrl(RecipeController.BASE_URL + "/" + recipe.getId());
+                    return recipeDTO;
+                })
                 .collect(Collectors.toList());
     }
 
@@ -34,6 +39,13 @@ public class RecipeServiceImpl implements RecipeService {
         Recipe byDescription = recipeRepository.findByDescription(description);
 
         return recipeMapper.recipeToRecipeDTO(byDescription);
+    }
+
+    @Override
+    public RecipeDTO getRecipeById(Long id) {
+        return recipeRepository.findById(id)
+                .map(recipeMapper::recipeToRecipeDTO)
+                .orElseThrow(RuntimeException::new);
     }
 
     @Override
